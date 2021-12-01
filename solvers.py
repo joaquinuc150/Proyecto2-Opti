@@ -8,9 +8,8 @@ limite_sup_costo = int(input("Costo maximo del servicio: "))
 servicios_zonas_max = int(input("Cantidad maxima de zonas cubiertas por un servicio\n(Debe ser menor o igual a "+str(servicios)+"): "))
 
 costos_servicios = [random.randint(limite_inf_costo,limite_sup_costo) for x in range(servicios)]
-
+print(costos_servicios)
 servicios_list = [x for x in range(1,servicios+1)]
-coberturas = []
 for x in range(zonas):
     coberturas.append(random.sample(servicios_list,random.randint(1,servicios_zonas_max)))
 
@@ -25,7 +24,9 @@ for i in range(servicios):
         fo += ';\n'
 
 const = ""
+restriccion = 1
 for zona in coberturas:
+    const += "r"+str(restriccion)+": "
     for j in range(len(zona)):
         const += "x"+str(zona[j])
         if j < (len(zona)- 1):
@@ -33,6 +34,7 @@ for zona in coberturas:
         else:
             const += " >= 1"
     const += ";\n"
+    restriccion += 1
 
 bin = "bin "
 for i in range(servicios):
@@ -81,7 +83,14 @@ for z in coberturas: # cada z es una zona con las locaciones que le sirven z = [
 
 file.write(""+ "\n")
 
-file.write("solve satisfy;"+ "\n")
+file.write("solve minimize ")
+
+for i in range(1, servicios+1):
+    file.write(str(costos_servicios[i-1])+"*x"+str(i))
+    if i < servicios:
+        file.write(" + ")
+    else:
+        file.write(";\n")
 
 file.write(""+ "\n")
 
@@ -90,4 +99,11 @@ file.write("output [")
 for neim in nombres:
     file.write('"{}"'.format("\\n" +neim+"=")+", show("+neim+"), "+ "\n")
 
-file.write('"{}"'.format("\\n")+ "];")
+file.write('"{}"'.format("\\n Solucion Funcion Objetivo =")+ ", show(")
+for i in range(1, servicios+1):
+    file.write(str(costos_servicios[i-1])+"*x"+str(i))
+    if i < servicios:
+        file.write(" + ")
+file.write(")];")
+
+file.close()
