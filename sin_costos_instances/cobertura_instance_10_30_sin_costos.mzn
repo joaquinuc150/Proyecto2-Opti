@@ -9,39 +9,42 @@ var 0..1 : x7;
 var 0..1 : x8;
 var 0..1 : x9;
 var 0..1 : x10;
+var int: fo;
 
-constraint x4 + x9 + x3 >= 1;
-constraint x2 + x10 >= 1;
-constraint x8 + x7 + x6 + x2 >= 1;
-constraint x6 + x8 >= 1;
-constraint x7 >= 1;
-constraint x7 + x1 + x6 + x8 >= 1;
-constraint x2 + x6 + x3 + x7 >= 1;
-constraint x8 + x9 >= 1;
-constraint x6 + x3 + x8 >= 1;
-constraint x2 >= 1;
-constraint x1 + x6 + x9 >= 1;
+constraint x8 + x7 + x1 >= 1;
 constraint x9 >= 1;
-constraint x5 >= 1;
-constraint x4 + x5 + x3 >= 1;
-constraint x9 + x3 + x10 + x5 >= 1;
+constraint x9 >= 1;
+constraint x9 >= 1;
+constraint x8 >= 1;
+constraint x2 + x8 >= 1;
+constraint x7 + x4 >= 1;
+constraint x2 >= 1;
+constraint x6 + x5 >= 1;
+constraint x3 + x9 + x4 + x8 >= 1;
 constraint x10 >= 1;
-constraint x8 + x2 + x5 >= 1;
-constraint x6 >= 1;
-constraint x6 + x3 >= 1;
-constraint x6 + x2 + x9 >= 1;
-constraint x5 + x4 + x8 >= 1;
-constraint x5 + x10 + x3 + x7 >= 1;
-constraint x9 + x8 >= 1;
-constraint x3 + x4 + x7 + x2 >= 1;
-constraint x6 + x9 + x3 + x1 >= 1;
-constraint x4 + x9 + x5 >= 1;
-constraint x10 + x8 >= 1;
-constraint x4 >= 1;
-constraint x1 + x10 + x5 >= 1;
-constraint x6 + x10 + x5 + x4 >= 1;
+constraint x4 + x7 + x3 >= 1;
+constraint x7 + x9 + x3 + x4 >= 1;
+constraint x6 + x4 + x7 + x1 >= 1;
+constraint x9 + x5 + x10 >= 1;
+constraint x8 + x9 >= 1;
+constraint x6 + x1 + x9 >= 1;
+constraint x3 + x2 + x9 + x6 >= 1;
+constraint x2 >= 1;
+constraint x3 + x9 + x10 + x6 >= 1;
+constraint x8 + x10 >= 1;
+constraint x7 + x2 + x9 >= 1;
+constraint x1 + x6 + x9 >= 1;
+constraint x8 + x2 + x9 + x10 >= 1;
+constraint x2 >= 1;
+constraint x5 + x3 + x4 >= 1;
+constraint x2 + x8 + x10 + x6 >= 1;
+constraint x4 + x3 + x1 >= 1;
+constraint x3 >= 1;
+constraint x5 + x1 >= 1;
 
-solve minimize 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5 + 1*x6 + 1*x7 + 1*x8 + 1*x9 + 1*x10;
+constraint 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5 + 1*x6 + 1*x7 + 1*x8 + 1*x9 + 1*x10= fo;
+
+solve minimize fo;
 
 output ["\nx1=", show(x1), 
 "\nx2=", show(x2), 
@@ -53,4 +56,4 @@ output ["\nx1=", show(x1),
 "\nx8=", show(x8), 
 "\nx9=", show(x9), 
 "\nx10=", show(x10), 
-"\n Solucion Funcion Objetivo =", show(1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5 + 1*x6 + 1*x7 + 1*x8 + 1*x9 + 1*x10)];
+"\n Solucion Funcion Objetivo =", show(fo)];
