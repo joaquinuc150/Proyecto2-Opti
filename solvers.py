@@ -5,7 +5,7 @@ servicios = int(input("Cantidad de ubicaciones posibles de servicios: "))
 zonas = int(input("Cantidad de zonas: "))
 limite_inf_costo = int(input("Costo minimo del servicio: "))
 limite_sup_costo = int(input("Costo maximo del servicio: "))
-servicios_zonas_max = int(input("Cantidad maxima de zonas cubiertas por un servicio\n(Debe ser menor o igual a "+str(servicios)+"): "))
+servicios_zonas_max = int(input("Cantidad maxima de servicios colindantes a una zona\n(Debe ser menor o igual a "+str(servicios)+"): "))
 
 costos_servicios = [random.randint(limite_inf_costo,limite_sup_costo) for x in range(servicios)]
 coberturas = []
